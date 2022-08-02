@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gdrfile"
-version = "0.1.2"
+version = "0.0.1"
 description = "Generate file for django rest framework."
 authors = ["Gleb Mazur <mazur.gleb2010@yandex.ru>"]
 license = "MIT"
