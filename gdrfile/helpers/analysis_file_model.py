@@ -67,7 +67,7 @@ class ModelAnalysis(ast.NodeVisitor):
 
         self.result.update(
             {
-                '{{list_main_fields}}': list(self.fields_django_model.keys()),
+                '{{list_main_fields}}': tuple(self.fields_django_model.keys()),
                 'fields_django_model': self.fields_django_model,
                 'fields_for_serializers': self.fields_for_serializers,
                 'fields_for_conftest': self.fields_for_conftest,

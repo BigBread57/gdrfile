@@ -219,7 +219,7 @@ fake = Faker()
 
 @pytest.mark.django_db()
 def test_account_format(
-    api_client,
+    user_api_client,
     account,
     account_format,
 ):
@@ -229,18 +229,18 @@ def test_account_format(
         [account.pk],
     )
 
-    json_response = api_client.get(url).json()
+    json_response = user_api_client.get(url).json()
 
     assert json_response == account_format(account)
 
 
 @pytest.mark.django_db()
 def test_account_post(
-    api_client,
+    user_api_client,
 ):
     """Создание Account."""
     url = reverse('api:mobile-provision:account-list')
-    json_response = api_client.post(
+    json_response = user_api_client.post(
         url,
         data={},
         format='json',
@@ -251,7 +251,7 @@ def test_account_post(
 
 @pytest.mark.django_db()
 def test_account_delete(
-    api_client,
+    user_api_client,
     account,
 ):
     """Удаление Account."""
@@ -260,14 +260,14 @@ def test_account_delete(
         [account.pk],
     )
 
-    json_response = api_client.delete(url)
+    json_response = user_api_client.delete(url)
 
     assert json_response.status_code == status.HTTP_204_NO_CONTENT
 
 
 @pytest.mark.django_db()
 def test_account_change(
-    api_client,
+    user_api_client,
     account,
 ):
     """Изменение Account."""
@@ -276,7 +276,7 @@ def test_account_change(
         [account.pk],
     )
 
-    json_response = api_client.put(
+    json_response = user_api_client.put(
         url,
         data={},
         format='json',

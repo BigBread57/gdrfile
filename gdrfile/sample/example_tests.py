@@ -8,26 +8,26 @@ fake = Faker()
 
 @pytest.mark.django_db()
 def test_{{main_class}}_format(
-    api_client,
+    user_api_client,
     {{main_class}},
     {{main_class}}_format,
 ):
     """Формат {{MainClass}}."""
     url = reverse('{{app-name}}:{{main-class}}-detail', [{{main_class}}.pk])
 
-    response = api_client.get(url)
+    response = user_api_client.get(url)
 
     assert response.status_code == status.HTTP_200_OK
-    assert response == {{main_class}}_format({{main_class}})
+    assert response.json() == {{main_class}}_format({{main_class}})
 
 
 @pytest.mark.django_db()
 def test_{{main_class}}_post(
-    api_client,
+    user_api_client,
 ):
     """Создание {{MainClass}}."""
     url = reverse('{{app-name}}:{{main-class}}-list')
-    response = api_client.post(
+    response = user_api_client.post(
         url,
         data={},
         format='json',
@@ -37,24 +37,24 @@ def test_{{main_class}}_post(
 
 
 @pytest.mark.django_db()
-def test_{{main_class}}_delete(api_client, {{main_class}}):
+def test_{{main_class}}_delete(user_api_client, {{main_class}}):
     """Удаление {{MainClass}}."""
     url = reverse('{{app-name}}:{{main-class}}-detail', [{{main_class}}.pk])
 
-    response = api_client.delete(url)
+    response = user_api_client.delete(url)
 
     assert response.status_code == status.HTTP_204_NO_CONTENT
 
 
 @pytest.mark.django_db()
 def test_{{main_class}}_change(
-    api_client,
+    user_api_client,
     {{main_class}},
 ):
     """Изменение {{MainClass}}."""
     url = reverse('api:{{app-name}}:{{main-class}}-detail', [{{main_class}}.pk])
 
-    response = api_client.put(
+    response = user_api_client.put(
         url,
         data={},
         format='json',

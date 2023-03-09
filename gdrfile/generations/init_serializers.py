@@ -47,7 +47,7 @@ class GenerateInitSerializers(AbstractGenerate, Helper):
             # 4) Дописываем новый класс сериализатора.
             if start_position > 0:
                 new_initial_ser_file = (
-                    'from {path_to_app}.api.serializer.{main_class} import {main_class_camel}Serializer\n'.format(  # noqa: E501
+                    'from {path_to_app}.api.serializers.{main_class} import {main_class_camel}Serializer\n'.format(  # noqa: E501
                         path_to_app=self.params.get('{{path_to_app}}'),
                         main_class=self.params.get('{{main_class}}'),
                         main_class_camel=self.params.get('{{MainClass}}'),
